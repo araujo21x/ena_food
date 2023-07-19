@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: app_ena_food
+    command: bash -c "yarn start-dev"
+    restart: always
+    working_dir: /home/app
+    volumes:
+      - .:/usr/app
+    depends_on:
+      app_mongodb:
+        condition: service_healthy
+    env_file:
+      - .env
+    ports:
+      -  ${PORT}:${PORT}
+    links:
+      - app_mongodb
+
+  app_mongodb:
+    image: mongo:6-jammy
+    restart: always
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+    ports:
+      - "3500:27017"
+    volumes:
+      - "./data:/data/db"
+
+volumes:
+  app_volume:
+    driver: local
