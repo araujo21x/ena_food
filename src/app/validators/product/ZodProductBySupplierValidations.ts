@@ -4,6 +4,7 @@ import {
   ZodValidation,
   zod,
 } from '@lib/zod/ZodValidation';
+import ProductStatus from '@myTypes/enums/ProductStatus';
 import { NextFunction, Request, Response } from 'express';
 
 class ZodProductBySupplierValidations {
@@ -27,6 +28,10 @@ class ZodProductBySupplierValidations {
     preparationTime: ZodGenericValidation.decimalOptional(
       'tempo de preparação'
     ),
+    status: zod
+      .enum([ProductStatus.ACTIVE, ProductStatus.INACTIVE])
+      .optional()
+      .nullable(),
   };
 
   static schemaShow = {
@@ -35,6 +40,10 @@ class ZodProductBySupplierValidations {
 
   static schemaIndex = {
     name: ZodGenericValidation.stringOptional('nome'),
+    status: zod
+      .enum([ProductStatus.ACTIVE, ProductStatus.INACTIVE, 'Todos'])
+      .optional()
+      .nullable(),
     paginate: zod.enum(['yes', 'not']).optional().nullable(),
     limit: ZodGenericValidation.numberIsStringOptional('limite'),
     page: ZodGenericValidation.numberIsStringOptional('pagina'),

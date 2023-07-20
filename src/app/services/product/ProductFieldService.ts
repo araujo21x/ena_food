@@ -10,7 +10,7 @@ class ProductFieldService {
 
     if (id) where.push({ _id: id });
     if (name) where.push({ name });
-    if (status) where.push({ status });
+    if (status && status !== 'Todos') where.push({ status });
     if (supplierId) where.push({ supplier: supplierId });
 
     return where;

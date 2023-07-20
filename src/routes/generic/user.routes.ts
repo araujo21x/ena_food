@@ -3,6 +3,7 @@ import userByUserController from '@controller/user/UserByUserController';
 import authenticated from '@middlewares/authenticatedMid';
 import UserByUserValidationAdapter from '@validators/user/UserByUserValidationAdapter';
 import { Router } from 'express';
+import productByUserRouter from './productByUser.routes';
 
 const userRouter = Router();
 
@@ -22,6 +23,8 @@ userRouter
     UserByUserValidationAdapter.editSelf,
     userByUserController.editSelf
   );
+
+userRouter.use('/product', productByUserRouter);
 
 userRouter
   .route('/supplier/:id')
