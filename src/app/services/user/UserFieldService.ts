@@ -6,7 +6,17 @@ import { FilterQuery } from 'mongoose';
 
 class UserFieldService {
   public filter(filter: IQrsUser): FilterQuery<IUser>[] {
-    const { id, document, email, phone, businessName, role, status } = filter;
+    const {
+      id,
+      document,
+      email,
+      phone,
+      businessName,
+      role,
+      status,
+      city,
+      state,
+    } = filter;
     const where: FilterQuery<IUser>[] = [];
 
     if (id) where.push({ _id: id });
@@ -16,6 +26,8 @@ class UserFieldService {
     if (businessName) where.push({ businessName });
     if (role) where.push({ role });
     if (status) where.push({ status });
+    if (city) where.push({ 'addresses.city': city });
+    if (state) where.push({ 'addresses.state': state });
 
     return where;
   }

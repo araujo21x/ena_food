@@ -60,9 +60,7 @@ class UserService {
     }
     const result = await query;
 
-    console.log(result);
-
-    return query;
+    return result;
   }
 }
 

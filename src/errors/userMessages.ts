@@ -5,7 +5,7 @@ export default {
 
   ACCESS_DENIED: 'Sem permissão para acessar esse recurso.',
   HAS_NO_ASSOCIATED_PERMISSION:
-    'Usuário informado não possui permissões associadas a ele.',
+    'Usuário informado não possui permissões para essa operação.',
 
   USER_INVALID: 'Usuário invalido.',
   EXPIRED_PASSWORD_RECOVERY: 'Código de recuperação de senha expirou',

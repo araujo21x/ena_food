@@ -11,4 +11,6 @@ export default interface IQrsUser extends IMyQueries {
   businessName?: string;
   role?: string;
   status?: string;
+  state?: string;
+  city?: string;
 }
