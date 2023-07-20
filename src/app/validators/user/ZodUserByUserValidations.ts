@@ -6,7 +6,7 @@ import { NextFunction, Request, Response } from 'express';
 class ZodUserByUserValidations {
   static readonly schemaCreateDefault = {
     name: ZodGenericValidation.stringOptional('nome'),
-    phone: ZodGenericValidation.cpfCnpj.nullable().optional(),
+    phone: ZodGenericValidation.phone.nullable().optional(),
     password: ZodGenericValidation.password.nullable().optional(),
     confirmPassword: ZodGenericValidation.password.nullable().optional(),
   };

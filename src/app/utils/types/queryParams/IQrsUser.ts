@@ -1,7 +1,8 @@
+import { Types } from 'mongoose';
 import IMyQueries from './IMyQueries';
 
 export default interface IQrsUser extends IMyQueries {
-  id?: number;
+  id?: Types.ObjectId;
   notId?: number;
   name?: string;
   document?: string;

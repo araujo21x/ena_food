@@ -38,7 +38,7 @@ class UserService {
 
   public async edit(body: Partial<IUser>, id: Types.ObjectId): Promise<IUser> {
     const user = await User.findByIdAndUpdate(
-      { id },
+      { _id: id },
       userFieldService.factory(body),
       { new: true }
     );
