@@ -3,7 +3,7 @@ import { Types } from 'mongoose';
 export interface IAddress {
   id: Types.ObjectId;
   name: string;
-  default: string;
+  default: boolean;
   street: string;
   district: string;
   zipCode: string;
