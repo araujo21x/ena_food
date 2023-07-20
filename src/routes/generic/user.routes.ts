@@ -8,7 +8,11 @@ const userRouter = Router();
 
 userRouter
   .route('/supplier')
-  .get(authenticated, supplierByUserController.index);
+  .get(
+    authenticated,
+    UserByUserValidationAdapter.index,
+    supplierByUserController.index
+  );
 
 userRouter
   .route('/self')
@@ -21,6 +25,10 @@ userRouter
 
 userRouter
   .route('/supplier/:id')
-  .get(authenticated, supplierByUserController.show);
+  .get(
+    authenticated,
+    UserByUserValidationAdapter.show,
+    supplierByUserController.show
+  );
 
 export default userRouter;

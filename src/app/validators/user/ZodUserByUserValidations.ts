@@ -4,7 +4,7 @@ import { IUserRoleKey } from '@myTypes/keys/IUserRoleKey';
 import { NextFunction, Request, Response } from 'express';
 
 class ZodUserByUserValidations {
-  static readonly schemaCreateDefault = {
+  static readonly schemaEditDefault = {
     name: ZodGenericValidation.stringOptional('nome'),
     phone: ZodGenericValidation.phone.nullable().optional(),
     password: ZodGenericValidation.password.nullable().optional(),
@@ -23,9 +23,9 @@ class ZodUserByUserValidations {
     complement: ZodGenericValidation.stringOptional('complemento'),
   };
 
-  static readonly schemaCreate = {
+  static readonly schemaEdit = {
     Fornecedor: {
-      ...this.schemaCreateDefault,
+      ...this.schemaEditDefault,
       addresses: zod
         .object(this.schemaAddress)
         .array()
@@ -35,7 +35,7 @@ class ZodUserByUserValidations {
       businessName: ZodGenericValidation.stringOptional('nome empresarial'),
     },
     Cliente: {
-      ...this.schemaCreateDefault,
+      ...this.schemaEditDefault,
       addresses: zod
         .object(this.schemaAddress)
         .array()
@@ -45,7 +45,7 @@ class ZodUserByUserValidations {
       birthDay: ZodGenericValidation.birthDay(18).nullable().optional(),
     },
     Empresa: {
-      ...this.schemaCreateDefault,
+      ...this.schemaEditDefault,
       addresses: zod
         .object(this.schemaAddress)
         .array()
@@ -56,10 +56,23 @@ class ZodUserByUserValidations {
     },
   };
 
+  static schemaShow = {
+    id: ZodGenericValidation.string('identificador'),
+  };
+
+  static schemaIndex = {
+    name: ZodGenericValidation.stringOptional('nome'),
+    city: ZodGenericValidation.stringOptional('cidade'),
+    state: ZodGenericValidation.stringOptional('estado'),
+    paginate: zod.enum(['yes', 'not']).optional().nullable(),
+    limit: ZodGenericValidation.numberIsStringOptional('limite'),
+    page: ZodGenericValidation.numberIsStringOptional('pagina'),
+  };
+
   static editSelf(req: Request, res: Response, next: NextFunction) {
     ZodValidation.validate(
       zod
-        .object(this.schemaCreate[req.userRole as IUserRoleKey])
+        .object(this.schemaEdit[req.userRole as IUserRoleKey])
         .refine((date) => {
           if (date.password || date.confirmPassword) {
             if (date.password !== date.confirmPassword) return false;
@@ -68,6 +81,26 @@ class ZodUserByUserValidations {
           return true;
         }, 'Senhas não conferem'),
       'body',
+      req,
+      res,
+      next
+    );
+  }
+
+  static show(req: Request, res: Response, next: NextFunction) {
+    ZodValidation.validate(
+      zod.object(this.schemaShow),
+      'params',
+      req,
+      res,
+      next
+    );
+  }
+
+  static index(req: Request, res: Response, next: NextFunction) {
+    ZodValidation.validate(
+      zod.object(this.schemaIndex),
+      'query',
       req,
       res,
       next

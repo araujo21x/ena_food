@@ -9,6 +9,7 @@ class UserFieldService {
     const {
       id,
       document,
+      name,
       email,
       phone,
       businessName,
@@ -20,6 +21,7 @@ class UserFieldService {
     const where: FilterQuery<IUser>[] = [];
 
     if (id) where.push({ _id: id });
+    if (name) where.push({ name });
     if (document) where.push({ document });
     if (email) where.push({ email });
     if (phone) where.push({ phone });

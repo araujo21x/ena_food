@@ -1,4 +1,5 @@
 import userMessages from '@errors/userMessages';
+import productMessages from './productMessages';
 
 export default {
   INTERNAL_SERVER_ERROR: 'Erro interno no servidor.',
@@ -15,4 +16,5 @@ export default {
   FILE_IS_MANDATORY: 'Arquivo é obrigatório.',
 
   ...userMessages,
+  ...productMessages,
 };

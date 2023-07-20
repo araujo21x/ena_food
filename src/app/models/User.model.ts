@@ -3,7 +3,7 @@ import mongoose, { Types, Schema, Model } from 'mongoose';
 import UserRole from '@myTypes/enums/UserRole';
 import schemaAddress, { IAddress } from './Address.model';
 
-interface IUser {
+export interface IUser {
   id: Types.ObjectId;
   _id: Types.ObjectId;
   name: string;
@@ -50,6 +50,6 @@ const schemaUser = {
 const schema = new Schema<IUser, Model<IUser>>(schemaUser, {
   timestamps: true,
 });
-export { IUser };
+
 const User = mongoose.model('User', schema);
 export default User;
