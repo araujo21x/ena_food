@@ -107,6 +107,22 @@ class OrderByUserController {
 
     return res.status(200).json(orders);
   }
+
+  public async finished(req: Request, res: Response): Promise<Response> {
+    await allowedUser.generic(req, [UserRole.CUSTOMER, UserRole.COMPANY]);
+    const { body } = req;
+
+    const order = await orderService.searchBy({
+      clientId: req.userId,
+      status: OrderStatus.CART,
+    });
+    if (!order) throw new AppError(errorMessages.CART_NOT_FOUND, 404);
+    orderByUserService.handlerStatusByPaymentOrder(body.paymentType, body);
+
+    const orders = await orderService.edit(body, order.id);
+
+    return res.status(200).json(orders);
+  }
 }
 
 export default new OrderByUserController();

@@ -1,6 +1,8 @@
 import ZodGenericValidation from '@lib/zod/ZodSchemaGeneric';
 import { ZodValidation, zod } from '@lib/zod/ZodValidation';
+import DeliveryType from '@myTypes/enums/DeliveryType';
 import OrderStatus from '@myTypes/enums/OrderStatus';
+import PaymentType from '@myTypes/enums/PaymentType';
 import { NextFunction, Request, Response } from 'express';
 
 class ZodOrderByUserValidations {
@@ -15,11 +17,31 @@ class ZodOrderByUserValidations {
       .min(1),
   };
 
-  static schemaShow = {
+  static readonly schemaFinished = {
+    deliveryType: zod.enum([DeliveryType.DELIVERY, DeliveryType.WITHDRAWAL]),
+    address: zod.object({
+      name: ZodGenericValidation.string('nome'),
+      street: ZodGenericValidation.string('rua'),
+      district: ZodGenericValidation.string('bairro'),
+      zipCode: ZodGenericValidation.numberIsString('rua').length(8),
+      number: ZodGenericValidation.string('numero'),
+      city: ZodGenericValidation.string('cidade'),
+      state: ZodGenericValidation.string('cidade', 2, 2),
+      complement: ZodGenericValidation.stringOptional('complemento'),
+    }),
+    paymentType: zod.enum([
+      PaymentType.APP,
+      PaymentType.CREDIT_CAR,
+      PaymentType.FOOD_STAMPS,
+      PaymentType.MONEY,
+    ]),
+  };
+
+  static readonly schemaShow = {
     id: ZodGenericValidation.string('identificador'),
   };
 
-  static schemaIndex = {
+  static readonly schemaIndex = {
     status: zod
       .enum([
         OrderStatus.AWAITING_PAYMENT,
@@ -80,6 +102,16 @@ class ZodOrderByUserValidations {
     ZodValidation.validate(
       zod.object(this.schemaIndex),
       'query',
+      req,
+      res,
+      next
+    );
+  }
+
+  static finished(req: Request, res: Response, next: NextFunction) {
+    ZodValidation.validate(
+      zod.object(this.schemaFinished),
+      'body',
       req,
       res,
       next

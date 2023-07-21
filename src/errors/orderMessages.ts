@@ -4,5 +4,6 @@ export default {
   SUPPLIER_INVALID: 'Apenas um fornecedor por pedido.',
   PRODUCT_INVALID:
     'Um dos produtos estava invalido ou não pertence ao fornecedor.',
-  CART_NOT_FOUND: 'Sem carrinho,adicione produtos para criar um novo carrinho.',
+  CART_NOT_FOUND:
+    'Sem carrinho, adicione produtos para criar um novo carrinho.',
 };

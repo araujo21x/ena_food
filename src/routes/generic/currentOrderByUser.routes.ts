@@ -18,4 +18,12 @@ currentOrderByUserRouter
     orderByUserController.item
   );
 
+currentOrderByUserRouter
+  .route('/finished')
+  .patch(
+    authenticated,
+    OrderByUserValidationAdapter.finished,
+    orderByUserController.finished
+  );
+
 export default currentOrderByUserRouter;

@@ -13,6 +13,10 @@ class OrderByUserValidationAdapter {
   static index(req: Request, res: Response, next: NextFunction) {
     return ZodOrderByUserValidations.index(req, res, next);
   }
+
+  static finished(req: Request, res: Response, next: NextFunction) {
+    return ZodOrderByUserValidations.finished(req, res, next);
+  }
 }
 
 export default OrderByUserValidationAdapter;
