@@ -31,6 +31,8 @@ class OrderFieldService {
     if (body.supplierId) order.supplier = body.supplierId;
     if (body.clientId) order.client = body.clientId;
     if (body.items) order.items = body.items;
+    if (body.payment) order.payment = body.payment;
+    if (body.address) order.address = body.address;
 
     return order;
   }
