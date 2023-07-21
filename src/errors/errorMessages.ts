@@ -1,5 +1,6 @@
 import userMessages from '@errors/userMessages';
 import productMessages from './productMessages';
+import orderMessages from './orderMessages';
 
 export default {
   INTERNAL_SERVER_ERROR: 'Erro interno no servidor.',
@@ -17,4 +18,5 @@ export default {
 
   ...userMessages,
   ...productMessages,
+  ...orderMessages,
 };

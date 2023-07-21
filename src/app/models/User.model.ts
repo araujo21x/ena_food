@@ -4,6 +4,7 @@ import UserRole from '@myTypes/enums/UserRole';
 import schemaAddress, { IAddress } from './Address.model';
 
 export interface IUser {
+  id: Types.ObjectId;
   name: string;
   email: string;
   phone: string;

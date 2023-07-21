@@ -17,14 +17,14 @@ export interface IAddress {
 
 const schemaAddress = {
   id: Types.ObjectId,
-  name: { type: String, required: true },
-  default: { type: Boolean, required: true },
-  street: { type: String, required: true },
-  district: { type: String, required: true },
-  zipCode: { type: String, required: true },
-  city: { type: String, required: true },
-  state: { type: String, required: true },
-  number: { type: String, required: true },
+  name: { type: String, required: false },
+  default: { type: Boolean, required: false },
+  street: { type: String, required: false },
+  district: { type: String, required: false },
+  zipCode: { type: String, required: false },
+  city: { type: String, required: false },
+  state: { type: String, required: false },
+  number: { type: String, required: false },
   complement: { type: String, required: false },
 };
 

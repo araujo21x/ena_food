@@ -50,7 +50,7 @@ class ProductService {
 
     const query = Product.find({
       [filter.operation]: productFieldService.filter(filter),
-    });
+    }).populate('supplier');
 
     if (!filter.paginate || filter.paginate === 'yes') {
       const { limit = 10, page = 1 } = filter;
