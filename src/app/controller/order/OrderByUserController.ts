@@ -30,6 +30,7 @@ class OrderByUserController {
     const products = await productService.index({
       status: ProductStatus.ACTIVE,
       supplierId: body.supplierId,
+      paginate: 'not',
     });
 
     const { newItems, valueItems } = orderByUserService.handleItemByOrder(
@@ -122,6 +123,27 @@ class OrderByUserController {
     const orders = await orderService.edit(body, order.id);
 
     return res.status(200).json(orders);
+  }
+
+  public async cancel(req: Request, res: Response): Promise<Response> {
+    await allowedUser.generic(req, [UserRole.CUSTOMER, UserRole.COMPANY]);
+
+    const { id }: any = req.params;
+    let order = await orderService.getBy({
+      id,
+      clientId: req.userId,
+      notStatus: [OrderStatus.CART],
+    });
+
+    if (order.status !== OrderStatus.WAITING_RESTAURANT) {
+      throw new AppError(errorMessages.STATUS_INVALID_CANCEL_BY_USER, 400);
+    }
+
+    order = await orderService.edit({ status: OrderStatus.CANCELED }, order.id);
+
+    return res
+      .status(200)
+      .json({ message: 'Pedido cancelado com sucesso!', order });
   }
 }
 

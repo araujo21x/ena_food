@@ -8,4 +8,7 @@ export default {
     'Sem carrinho, adicione produtos para criar um novo carrinho.',
   STATUS_INVALID_CHANGE:
     'Status do pedido não pode mudar para o status informado.',
+  STATUS_INVALID_CANCEL_BY_USER:
+    'Status do invalido para o cliente fazer o cancelamento, entre em contando com o fornecedor.',
+  CURRENT_STATUS_CANNOT_BE_CHANGED: 'Status atual nao pode ser alterado',
 };

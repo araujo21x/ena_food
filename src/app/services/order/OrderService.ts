@@ -56,7 +56,8 @@ class OrderService {
     })
       .populate('items.product')
       .populate('client')
-      .populate('supplier');
+      .populate('supplier')
+      .sort({ createdAt: -1 });
 
     if (!filter.paginate || filter.paginate === 'yes') {
       const { limit = 10, page = 1 } = filter;

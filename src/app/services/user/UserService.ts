@@ -52,7 +52,7 @@ class UserService {
 
     const query = User.find({
       [filter.operation]: userFieldService.filter(filter),
-    });
+    }).sort({ createdAt: -1 });
 
     if (!filter.paginate || filter.paginate === 'yes') {
       const { limit = 10, page = 1 } = filter;

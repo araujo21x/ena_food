@@ -24,4 +24,12 @@ orderByUserRouter
     orderByUserController.show
   );
 
+orderByUserRouter
+  .route('/:id/cancel')
+  .patch(
+    authenticated,
+    OrderByUserValidationAdapter.show,
+    orderByUserController.cancel
+  );
+
 export default orderByUserRouter;
