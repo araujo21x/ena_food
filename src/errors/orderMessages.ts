@@ -6,4 +6,6 @@ export default {
     'Um dos produtos estava invalido ou não pertence ao fornecedor.',
   CART_NOT_FOUND:
     'Sem carrinho, adicione produtos para criar um novo carrinho.',
+  STATUS_INVALID_CHANGE:
+    'Status do pedido não pode mudar para o status informado.',
 };
