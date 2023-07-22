@@ -25,9 +25,10 @@ class SupplierByUserController {
     query.role = UserRole.SUPPLIER;
     query.status = UserStatus.ACTIVE;
 
-    const supplier = await userService.index(query);
+    const suppliers = await userService.index(query);
+    const count = await userService.count(query);
 
-    return res.status(200).json(supplier);
+    return res.status(200).json({ suppliers, count });
   }
 }
 

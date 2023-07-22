@@ -42,9 +42,9 @@ class ProductBySupplierController {
     await allowedUser.generic(req, [UserRole.SUPPLIER]);
 
     const { id }: any = req.params;
-    const supplier = await productService.getBy({ id, supplierId: req.userId });
+    const product = await productService.getBy({ id, supplierId: req.userId });
 
-    return res.status(200).json(supplier);
+    return res.status(200).json(product);
   }
 
   public async index(req: Request, res: Response): Promise<Response> {
@@ -53,9 +53,10 @@ class ProductBySupplierController {
     const { query }: any = req;
     query.supplierId = req.userId;
 
-    const supplier = await productService.index(query);
+    const products = await productService.index(query);
+    const count = await productService.count(query);
 
-    return res.status(200).json(supplier);
+    return res.status(200).json({ products, count });
   }
 }
 

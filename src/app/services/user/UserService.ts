@@ -62,6 +62,16 @@ class UserService {
 
     return result;
   }
+
+  public async count(filter: IQrsUser): Promise<number> {
+    if (!filter.operation) filter.operation = '$and';
+
+    const count = User.find({
+      [filter.operation]: userFieldService.filter(filter),
+    }).count();
+
+    return count;
+  }
 }
 
 export default new UserService();

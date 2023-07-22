@@ -71,6 +71,16 @@ class OrderService {
     return result;
   }
 
+  public async count(filter: IQrsOrder): Promise<number> {
+    if (!filter.operation) filter.operation = '$and';
+
+    const count = Order.find({
+      [filter.operation]: orderFieldService.filter(filter),
+    }).count();
+
+    return count;
+  }
+
   public async delete(filter: IQrsOrder): Promise<void> {
     await Order.deleteOne({ _id: filter.id });
   }

@@ -62,6 +62,16 @@ class ProductService {
 
     return result;
   }
+
+  public async count(filter: IQrsProduct): Promise<number> {
+    if (!filter.operation) filter.operation = '$and';
+
+    const count = Product.find({
+      [filter.operation]: productFieldService.filter(filter),
+    }).count();
+
+    return count;
+  }
 }
 
 export default new ProductService();

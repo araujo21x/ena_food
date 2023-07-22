@@ -28,8 +28,9 @@ class OrderBySupplierController {
     query.notStatus = [OrderStatus.CART, OrderStatus.AWAITING_PAYMENT];
 
     const orders = await orderService.index(query);
+    const count = await orderService.count(query);
 
-    return res.status(200).json(orders);
+    return res.status(200).json({ orders, count });
   }
 
   public async edit(req: Request, res: Response): Promise<Response> {

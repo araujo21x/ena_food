@@ -105,8 +105,9 @@ class OrderByUserController {
     query.notStatus = [OrderStatus.CART];
 
     const orders = await orderService.index(query);
+    const count = await orderService.count(query);
 
-    return res.status(200).json(orders);
+    return res.status(200).json({ orders, count });
   }
 
   public async finished(req: Request, res: Response): Promise<Response> {
