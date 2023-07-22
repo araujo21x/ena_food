@@ -42,12 +42,13 @@ ___
 <br>
 
 <p align="justify">
-Tentei deixar o projeto simples e com o máximo de função genérica, como a regra de negócio foi bem abstrata pensei em alguns cenários, as regras mais complexas deixei em funções separadas para facilitar atualização da regra de negócio. O Mongo só usei uma vez a 3 anos atrás, sou acostumado com banco relacional, mas tentei evitar o máximo possível relacionamentos para ganho de performasse.
-As tecnologias e pacotes escolhidas foram esses por motivo de um bom suporte e boa documentação.
+Tentei deixar o projeto simples e com o máximo de função genérica, como a regra de negócio foi bem abstrata pensei em alguns cenários, as regras mais complexas deixei em funções separadas para facilitar atualização da regra de negócio. O Mongo só usei uma vez a 3 anos atrás, sou acostumado com banco relacional, mas tentei evitar o máximo possível relacionamentos para ganho de performasse. As tecnologias e pacotes escolhidas foram esses por motivo de um bom suporte e boa documentação:
+
 - O número de telefone não coloquei como um campo único, pois é comum as pessoas perderem numero de telefone por não fazerem recarga;
 - O status do usuário tem pendente para caso o sistema adicione feature de análise antes de ser aprovado;
 - Endereço eu achei melhor adiciona como array de objeto no usuário e como um objeto no pedido para evitar relacionamento, acredito que seria mais performático do que criar um documento endereço com referência para o usuário ou para o endereço, que também seria uma cópia do endereço que o cliente escolheu com referência ao pedido.
-- No pagamento para fins de teste, mesmo que seja um tipo de pagamento que seria feito com gateway de pagamento, vou colocar como pagamento aceito e pular o status de aguardando pagamento.
+- No pagamento para fins de teste, mesmo que seja um tipo de pagamento que seria feito com gateway de pagamento, vou colocar como pagamento aceito e pular o status de aguardando pagamento;
+- As validações de campos tenho uma função para pegar os schema e gerar parte da documentação.
 
 </p>
 
