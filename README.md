@@ -14,7 +14,6 @@
 - [Pré-Requisito](#pré-requisito)
 - [Executando o projeto](#executando-o-projeto)
 - [Build](#build)
-- [Migrations](#migrations)
 - [Documentação](#documentação)
 - [Tecnologias](#tecnologias)
     - [Veja o arquivo package.json](#veja-o-arquivo-packagejson)
@@ -27,8 +26,13 @@ ___
 <br>
 
 <p align="justify">
-Em construção
+Projeto desafio delivery - enaFood.
 </p>
+
+- A documentação pode ser acessar através do endPoint: <strong>/apiDocs</strong>
+- Collection do insomnia [Link](/tmp/EnaFood_2023-07-22.json)
+- Docker configurado e tem um exemplo para o banc no docker na env
+
 <br>
 
 ---
@@ -37,7 +41,7 @@ Em construção
 <br>
 
   * [NojeJS](https://nodejs.org/en/) (Versão usada na construção -> 18.14.2): Runtime de JS no servidor;
-  * [MySQL](https://www.mysql.com/): Banco de dados do projeto;
+  * [MongoDB](https://www.mongodb.com/pt-br) (Versão 6): Banco de dados do projeto;
   * [Yarn](https://yarnpkg.com/): Gerenciador de pacote.
 
 <br>
@@ -112,46 +116,6 @@ $ yarn start-dev
 $ yarn start-prod
 ```
 ___
-
-# Migrations
-
-
-<h2> O comando para rodar as migrations atualmente esta pegando os dados do arquivo.</h2>
-
-<br>
-
-
-1. Rodar as migrations:
-```bash
-$ yarn migration:run
-```
-
-1. Reverter a ultima migration:
-```bash
-$ yarn migration:revert
-```
-
-1. Criar uma nova migration. Em "nome da migration" coloque o nome da sua nova migration sem as aspas:
-```bash
-$ yarn typeorm migration:create ./src/database/migrations/"name_migration"
-```
-
-1. Criar migration no código baseado nos models/entity's do sistema. Em "nome da migration" coloque o nome da sua nova migration sem as aspas. Recomendo usar enquanto estiver em desenvolvimento, depois que já tiver em uso pelo cliente criar manualmente as migrations:
-```bash
-$ yarn migration:generate ./src/database/migrations/"name_migration"
-```
-```bash
-$ yarn migration:generate ./src/database/migrations/"name_migration"
-```
-
-1. Arquivos para salvar no banco, como primeiro usuário e etc...:
-```bash
-$ yarn dump
-```
-
-<br>
-
-___
 # Documentação
 1. Gerar schemas da request a partir do zod:
 ```bash
@@ -174,11 +138,10 @@ precisar reiniciar no ambiente de desenvolvimento;
 - [zod](https://zod.dev/): Ferramenta de validação do código;
 - [zod-to-openapi](https://github.com/asteasolutions/zod-to-openapi): Ferramenta que pega os schemas do zod e converte para OpenAPI;
 - [typeScript](https://www.typescriptlang.org/)(dev): Superset para JS;
-- [MySQL](https://www.mysql.com/): Banco de dados do projeto;
-- [TypeORM](https://typeorm.io/#/): ORM do projeto;
-- [compression](https://www.npmjs.com/package/compression): Serve para comprimir
+- [Mongo](https://www.mongodb.com/pt-br): Banco de dados do projeto;
+- [Mongoose](https://mongoosejs.com/docs/typescript/schemas.html): ODM do projeto;
+- [compression](https://www.npmjs.com/package/compression):  comprimir
 as resposta da API;
-- [typeorm](https://typeorm.io/#/): ORM para NodeJS;
 - [dotenv](https://www.npmjs.com/package/dotenv): Variável ambiente;
 - [bcryptjs](https://www.npmjs.com/package/bcryptjs): Serviço para encriptação de senha;
 - [jsonwebtoken](https://www.npmjs.com/package/jsonwebtoken): JWT, autenticação;
