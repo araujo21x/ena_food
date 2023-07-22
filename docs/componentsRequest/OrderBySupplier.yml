@@ -1,0 +1,66 @@
+components:
+  schemas:
+    EditOrderBySupplier:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Esperando preparação
+            - Em preparação
+            - Aguardando retirada
+            - Produto enviado
+            - Finalizado
+            - Cancelado
+      required:
+        - status
+  parameters:
+    id_ShowOrderBySupplier:
+      in: path
+      name: id
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 255
+      required: true
+    status_IndexOrderBySupplier:
+      in: query
+      name: status
+      schema:
+        type: string
+        nullable: true
+        enum:
+          - Aguardando Restaurante
+          - Esperando preparação
+          - Em preparação
+          - Aguardando retirada
+          - Produto enviado
+          - Finalizado
+          - Cancelado
+      required: false
+    paginate_IndexOrderBySupplier:
+      in: query
+      name: paginate
+      schema:
+        type: string
+        nullable: true
+        enum:
+          - yes
+          - not
+      required: false
+    limit_IndexOrderBySupplier:
+      in: query
+      name: limit
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false
+    page_IndexOrderBySupplier:
+      in: query
+      name: page
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false

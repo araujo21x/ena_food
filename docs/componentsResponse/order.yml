@@ -1,0 +1,61 @@
+components:
+  schemas:
+    Order:
+      type: object
+      properties:
+        _id:
+          type: integer
+          example: 1
+        value:
+          type: number
+          required: true
+          example: 20
+        discount:
+          type: number
+          required: true
+          description: Valor do desconto
+          example: 19
+        freight:
+          type: number
+          required: true
+          description: Valor do frete
+          example: 23
+        deliveryType:
+          type: string
+          required: true
+          enum: [Entrega, Retirada]
+          example: Ativo
+        status:
+          type: string
+          required: true
+          enum:
+            [
+              Carrinho,
+              Aguardando pagamento,
+              Aguardando Restaurante,
+              Esperando preparação,
+              Em preparação,
+              Aguardando retirada,
+              Produto enviado,
+              Finalizado,
+              Cancelado,
+            ]
+          example: Carrinho
+        supplier:
+          $ref: "#/components/schemas/User"
+        client:
+          $ref: "#/components/schemas/User"
+        address:
+          $ref: "#/components/schemas/Address"
+        payment:
+          $ref: "#/components/schemas/Payment"
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+        createdAt:
+          type: string
+          example: 2023-07-20T02:27:59.751Z
+        updatedAt:
+          type: string
+          example: 2023-07-20T02:27:59.751Z

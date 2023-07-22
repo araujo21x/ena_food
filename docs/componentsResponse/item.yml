@@ -1,0 +1,29 @@
+components:
+  schemas:
+    Item:
+      type: object
+      properties:
+        _id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          required: true
+          example: Quentinha simples
+        value:
+          type: number
+          required: true
+          example: 20
+        amount:
+          type: number
+          required: true
+          description: total de itens
+          example: 4
+        product:
+          $ref: "#/components/schemas/Product"
+        createdAt:
+          type: string
+          example: 2023-07-20T02:27:59.751Z
+        updatedAt:
+          type: string
+          example: 2023-07-20T02:27:59.751Z

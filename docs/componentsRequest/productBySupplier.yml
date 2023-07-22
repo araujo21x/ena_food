@@ -1,0 +1,107 @@
+components:
+  schemas:
+    CreateProductBySupplier:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        value:
+          type: number
+          minimum: 0
+          maximum: 9999999999
+        discount:
+          type: integer
+          nullable: true
+          minimum: 0
+          maximum: 100
+        preparationTime:
+          type: integer
+          minimum: 0
+      required:
+        - name
+        - value
+        - preparationTime
+    EditProductBySupplier:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 255
+        value:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 9999999999
+        discount:
+          type: integer
+          nullable: true
+          minimum: 0
+          maximum: 100
+        preparationTime:
+          type: number
+          nullable: true
+          minimum: 0
+          maximum: 9999999999
+        status:
+          type: string
+          nullable: true
+          enum:
+            - Ativo
+            - Inativo
+  parameters:
+    id_ShowProductBySupplier:
+      in: path
+      name: id
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 255
+      required: true
+    name_IndexProductBySupplier:
+      in: query
+      name: name
+      schema:
+        type: string
+        nullable: true
+        maxLength: 255
+      required: false
+    status_IndexProductBySupplier:
+      in: query
+      name: status
+      schema:
+        type: string
+        nullable: true
+        enum:
+          - Ativo
+          - Inativo
+          - Todos
+      required: false
+    paginate_IndexProductBySupplier:
+      in: query
+      name: paginate
+      schema:
+        type: string
+        nullable: true
+        enum:
+          - yes
+          - not
+      required: false
+    limit_IndexProductBySupplier:
+      in: query
+      name: limit
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false
+    page_IndexProductBySupplier:
+      in: query
+      name: page
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false

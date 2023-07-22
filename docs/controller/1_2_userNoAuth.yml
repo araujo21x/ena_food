@@ -1,0 +1,216 @@
+paths:
+  /v1/noAuth/user -> Fornecedor:
+    post:
+      tags: ["UserNoAuth(Usuário sem autenticação) - Geral"]
+      summary: (Fornecedor) -> Rota para cadastrar fornecedor.
+      description: Rota para cadastrar fornecedor.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNoAuthCompany'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: Usuário cadastrado com sucesso
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+  /v1/noAuth/user -> Empresa:
+    post:
+      tags: ["UserNoAuth(Usuário sem autenticação) - Geral"]
+      summary: (Empresa) -> Rota para cadastrar empresa.
+      description: Rota para cadastrar empresa.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNoAuthCompany'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: Usuário cadastrado com sucesso
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+  /v1/noAuth/user -> Cliente:
+    post:
+      tags: ["UserNoAuth(Usuário sem autenticação) - Geral"]
+      summary: (Cliente) -> Rota para cadastrar empresa.
+      description: Rota para cadastrar empresa.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateNoAuthClient'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: Usuário cadastrado com sucesso
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.

@@ -1,0 +1,137 @@
+paths:
+  /v1/user/product:
+    get:
+      tags: ["ProductByUser(Usuário manipula produtos) - App/Portal compra"]
+      summary: (App/Portal compra) -> Rota para listar/filtrar produtos.
+      description: Rota para listar/filtrar produtos.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/name_IndexProductByUser'
+        - $ref: '#/components/parameters/supplierId_IndexProductByUser'
+        - $ref: '#/components/parameters/paginate_IndexProductByUser'
+        - $ref: '#/components/parameters/limit_IndexProductByUser'
+        - $ref: '#/components/parameters/page_IndexProductByUser'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+  /v1/user/product/{id}:
+    get:
+      tags: ["ProductByUser(Usuário manipula produtos) - App/Portal compra"]
+      summary: (App/Portal compra) -> Rota para mostrar produto por id.
+      description: Rota para mostrar produto por id.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/id_ShowProductByUser'
+
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.

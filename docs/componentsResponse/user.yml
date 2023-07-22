@@ -1,0 +1,57 @@
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        _id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          required: true
+          example: Admin Master
+        businessName:
+          type: string
+          required: true
+          example: 2 irmãos lanchonete LTDA.
+        email:
+          type: string
+          required: true
+          example: user@admin.com
+        document:
+          type: string
+          required: true
+          description: cpj ou cnpj
+          example: 12312312312
+        phone:
+          type: string
+          required: false
+          example: 12912341234
+        role:
+          type: string
+          required: true
+          enum:
+            [
+              Cliente,
+              Empresa,
+              Fornecedor,
+            ]
+          example: Fornecedor
+        status:
+          type: string
+          required: true
+          enum: [Ativo, Inativo, Pendente]
+          example: Ativo
+        addresses:
+          type: array
+          items:
+            $ref: "#/components/schemas/Address"
+        createdAt:
+          type: string
+          example: 2023-07-20T02:27:59.751Z
+        updatedAt:
+          type: string
+          example: 2023-07-20T02:27:59.751Z
+        birthDay:
+          type: string
+          example: 1975-07-10T12:08:35.751Z

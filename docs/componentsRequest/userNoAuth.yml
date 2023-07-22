@@ -1,0 +1,294 @@
+components:
+  schemas:
+    CreateNoAuthClient:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        phone:
+          type: string
+          minLength: 11
+          maxLength: 11
+          pattern: \d{11}
+        email:
+          type: string
+          minLength: 1
+          maxLength: 255
+          format: email
+        password:
+          type: string
+          minLength: 8
+          maxLength: 255
+        confirmPassword:
+          type: string
+          minLength: 8
+          maxLength: 255
+        role:
+          type: string
+          enum: &a1
+            - Empresa
+            - Cliente
+            - Fornecedor
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+                maxLength: 255
+              default:
+                type: boolean
+              street:
+                type: string
+                minLength: 1
+                maxLength: 255
+              district:
+                type: string
+                minLength: 1
+                maxLength: 255
+              zipCode:
+                type: string
+                pattern: ^\d+$
+              number:
+                type: string
+                minLength: 1
+                maxLength: 255
+              city:
+                type: string
+                minLength: 1
+                maxLength: 255
+              state:
+                type: string
+                minLength: 2
+                maxLength: 2
+              complement:
+                type: string
+                nullable: true
+                maxLength: 255
+            required:
+              - name
+              - default
+              - street
+              - district
+              - zipCode
+              - number
+              - city
+              - state
+          minItems: 1
+          maxItems: 5
+        document:
+          type: string
+          minLength: 11
+          maxLength: 16
+        birthDay:
+          type: string
+          nullable: true
+          description: 'Qualquer formato de data que esteja em ano,mes e dia, exemplo:
+            "2022-01-12T00:00:00.000Z", 2022-01-12 e etc...'
+          example: 2000-01-01
+      required:
+        - name
+        - phone
+        - email
+        - password
+        - confirmPassword
+        - role
+        - addresses
+        - document
+        - birthDay
+    CreateNoAuthSupplier:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        phone:
+          type: string
+          minLength: 11
+          maxLength: 11
+          pattern: \d{11}
+        email:
+          type: string
+          minLength: 1
+          maxLength: 255
+          format: email
+        password:
+          type: string
+          minLength: 8
+          maxLength: 255
+        confirmPassword:
+          type: string
+          minLength: 8
+          maxLength: 255
+        role:
+          type: string
+          enum: *a1
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+                maxLength: 255
+              default:
+                type: boolean
+              street:
+                type: string
+                minLength: 1
+                maxLength: 255
+              district:
+                type: string
+                minLength: 1
+                maxLength: 255
+              zipCode:
+                type: string
+                pattern: ^\d+$
+              number:
+                type: string
+                minLength: 1
+                maxLength: 255
+              city:
+                type: string
+                minLength: 1
+                maxLength: 255
+              state:
+                type: string
+                minLength: 2
+                maxLength: 2
+              complement:
+                type: string
+                nullable: true
+                maxLength: 255
+            required:
+              - name
+              - default
+              - street
+              - district
+              - zipCode
+              - number
+              - city
+              - state
+          minItems: 1
+          maxItems: 1
+        document:
+          type: string
+          minLength: 11
+          maxLength: 18
+          example: "12345678912"
+        businessName:
+          type: string
+          minLength: 1
+          maxLength: 255
+      required:
+        - name
+        - phone
+        - email
+        - password
+        - confirmPassword
+        - role
+        - addresses
+        - document
+        - businessName
+    CreateNoAuthCompany:
+      type: object
+      properties:
+        name:
+          type: string
+          minLength: 1
+          maxLength: 255
+        phone:
+          type: string
+          minLength: 11
+          maxLength: 11
+          pattern: \d{11}
+        email:
+          type: string
+          minLength: 1
+          maxLength: 255
+          format: email
+        password:
+          type: string
+          minLength: 8
+          maxLength: 255
+        confirmPassword:
+          type: string
+          minLength: 8
+          maxLength: 255
+        role:
+          type: string
+          enum: *a1
+        addresses:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+                maxLength: 255
+              default:
+                type: boolean
+              street:
+                type: string
+                minLength: 1
+                maxLength: 255
+              district:
+                type: string
+                minLength: 1
+                maxLength: 255
+              zipCode:
+                type: string
+                pattern: ^\d+$
+              number:
+                type: string
+                minLength: 1
+                maxLength: 255
+              city:
+                type: string
+                minLength: 1
+                maxLength: 255
+              state:
+                type: string
+                minLength: 2
+                maxLength: 2
+              complement:
+                type: string
+                nullable: true
+                maxLength: 255
+            required:
+              - name
+              - default
+              - street
+              - district
+              - zipCode
+              - number
+              - city
+              - state
+          minItems: 1
+          maxItems: 1
+        document:
+          type: string
+          minLength: 14
+          maxLength: 18
+        businessName:
+          type: string
+          minLength: 1
+          maxLength: 255
+      required:
+        - name
+        - phone
+        - email
+        - password
+        - confirmPassword
+        - role
+        - addresses
+        - document
+        - businessName
+  parameters: {}

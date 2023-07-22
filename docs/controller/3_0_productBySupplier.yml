@@ -1,0 +1,284 @@
+paths:
+  /v1/supplier/product:
+    get:
+      tags: ["ProductBySupplier(Fornecedor manipula produtos) - App/Portal vendas"]
+      summary: (App/Portal vendas) -> Rota para listar/filtrar meus produtos.
+      description: Rota para listar/filtrar meus produtos.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/name_IndexProductBySupplier'
+        - $ref: '#/components/parameters/status_IndexProductBySupplier'
+        - $ref: '#/components/parameters/paginate_IndexProductBySupplier'
+        - $ref: '#/components/parameters/limit_IndexProductBySupplier'
+        - $ref: '#/components/parameters/page_IndexProductBySupplier'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Product'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+    post:
+      tags: ["ProductBySupplier(Fornecedor manipula produtos) - App/Portal vendas"]
+      summary: (App/Portal vendas) -> Rota para fornecedor cadastrar produtos.
+      description: Rota para fornecedor cadastrar produtos.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateProductBySupplier'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: produto cadastrado com sucesso
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+  /v1/supplier/product/{id}:
+    get:
+      tags: ["ProductBySupplier(Fornecedor manipula produtos) - App/Portal vendas"]
+      summary: (App/Portal vendas) -> Rota para mostrar meu produto por id.
+      description: Rota para mostrar meu produto por id.
+      security:
+        - bearerAuth: []
+      parameters:
+        - $ref: '#/components/parameters/id_ShowProductBySupplier'
+
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+    patch:
+      tags: ["ProductBySupplier(Fornecedor manipula produtos) - App/Portal vendas"]
+      summary: (App/Portal vendas) -> Rota para fornecedor editar produtos.
+      description: Rota para fornecedor editar produtos.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditProductBySupplier'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: produto editado com sucesso
+                  product:
+                    $ref: '#/components/schemas/Product'
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.

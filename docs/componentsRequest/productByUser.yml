@@ -1,0 +1,53 @@
+components:
+  schemas: {}
+  parameters:
+    id_ShowProductByUser:
+      in: path
+      name: id
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 255
+      required: true
+    name_IndexProductByUser:
+      in: query
+      name: name
+      schema:
+        type: string
+        nullable: true
+        maxLength: 255
+      required: false
+    supplierId_IndexProductByUser:
+      in: query
+      name: supplierId
+      schema:
+        type: string
+        nullable: true
+        maxLength: 255
+      required: false
+    paginate_IndexProductByUser:
+      in: query
+      name: paginate
+      schema:
+        type: string
+        nullable: true
+        enum:
+          - yes
+          - not
+      required: false
+    limit_IndexProductByUser:
+      in: query
+      name: limit
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false
+    page_IndexProductByUser:
+      in: query
+      name: page
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false

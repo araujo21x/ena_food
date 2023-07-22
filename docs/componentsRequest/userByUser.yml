@@ -1,0 +1,291 @@
+components:
+  schemas:
+    EditSelfClient:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 255
+        phone:
+          type: string
+          nullable: true
+          minLength: 11
+          maxLength: 11
+          pattern: \d{11}
+        password:
+          type: string
+          nullable: true
+          minLength: 8
+          maxLength: 255
+        confirmPassword:
+          type: string
+          nullable: true
+          minLength: 8
+          maxLength: 255
+        addresses:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+                maxLength: 255
+              default:
+                type: boolean
+              street:
+                type: string
+                minLength: 1
+                maxLength: 255
+              district:
+                type: string
+                minLength: 1
+                maxLength: 255
+              zipCode:
+                type: string
+                pattern: ^\d+$
+              number:
+                type: string
+                minLength: 1
+                maxLength: 255
+              city:
+                type: string
+                minLength: 1
+                maxLength: 255
+              state:
+                type: string
+                minLength: 2
+                maxLength: 2
+              complement:
+                type: string
+                nullable: true
+                maxLength: 255
+            required:
+              - name
+              - default
+              - street
+              - district
+              - zipCode
+              - number
+              - city
+              - state
+          maxItems: 5
+        birthDay:
+          type: string
+          nullable: true
+          description: 'Qualquer formato de data que esteja em ano,mes e dia, exemplo:
+            "2022-01-12T00:00:00.000Z", 2022-01-12 e etc...'
+          example: 2000-01-01
+    EditSelfSupplier:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 255
+        phone:
+          type: string
+          nullable: true
+          minLength: 11
+          maxLength: 11
+          pattern: \d{11}
+        password:
+          type: string
+          nullable: true
+          minLength: 8
+          maxLength: 255
+        confirmPassword:
+          type: string
+          nullable: true
+          minLength: 8
+          maxLength: 255
+        addresses:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+                maxLength: 255
+              default:
+                type: boolean
+              street:
+                type: string
+                minLength: 1
+                maxLength: 255
+              district:
+                type: string
+                minLength: 1
+                maxLength: 255
+              zipCode:
+                type: string
+                pattern: ^\d+$
+              number:
+                type: string
+                minLength: 1
+                maxLength: 255
+              city:
+                type: string
+                minLength: 1
+                maxLength: 255
+              state:
+                type: string
+                minLength: 2
+                maxLength: 2
+              complement:
+                type: string
+                nullable: true
+                maxLength: 255
+            required:
+              - name
+              - default
+              - street
+              - district
+              - zipCode
+              - number
+              - city
+              - state
+          maxItems: 1
+        businessName:
+          type: string
+          nullable: true
+          maxLength: 255
+    EditSelfCompany:
+      type: object
+      properties:
+        name:
+          type: string
+          nullable: true
+          maxLength: 255
+        phone:
+          type: string
+          nullable: true
+          minLength: 11
+          maxLength: 11
+          pattern: \d{11}
+        password:
+          type: string
+          nullable: true
+          minLength: 8
+          maxLength: 255
+        confirmPassword:
+          type: string
+          nullable: true
+          minLength: 8
+          maxLength: 255
+        addresses:
+          type: array
+          nullable: true
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+                minLength: 1
+                maxLength: 255
+              default:
+                type: boolean
+              street:
+                type: string
+                minLength: 1
+                maxLength: 255
+              district:
+                type: string
+                minLength: 1
+                maxLength: 255
+              zipCode:
+                type: string
+                pattern: ^\d+$
+              number:
+                type: string
+                minLength: 1
+                maxLength: 255
+              city:
+                type: string
+                minLength: 1
+                maxLength: 255
+              state:
+                type: string
+                minLength: 2
+                maxLength: 2
+              complement:
+                type: string
+                nullable: true
+                maxLength: 255
+            required:
+              - name
+              - default
+              - street
+              - district
+              - zipCode
+              - number
+              - city
+              - state
+          maxItems: 1
+        businessName:
+          type: string
+          nullable: true
+          maxLength: 255
+  parameters:
+    id_ShowSelf:
+      in: path
+      name: id
+      schema:
+        type: string
+        minLength: 1
+        maxLength: 255
+      required: true
+    name_IndexUserByUsers:
+      in: query
+      name: name
+      schema:
+        type: string
+        nullable: true
+        maxLength: 255
+      required: false
+    city_IndexUserByUsers:
+      in: query
+      name: city
+      schema:
+        type: string
+        nullable: true
+        maxLength: 255
+      required: false
+    state_IndexUserByUsers:
+      in: query
+      name: state
+      schema:
+        type: string
+        nullable: true
+        maxLength: 255
+      required: false
+    paginate_IndexUserByUsers:
+      in: query
+      name: paginate
+      schema:
+        type: string
+        nullable: true
+        enum:
+          - yes
+          - not
+      required: false
+    limit_IndexUserByUsers:
+      in: query
+      name: limit
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false
+    page_IndexUserByUsers:
+      in: query
+      name: page
+      schema:
+        type: string
+        nullable: true
+        pattern: ^\d+$
+      required: false

@@ -1,0 +1,27 @@
+components:
+  schemas:
+    Payment:
+      type: object
+      properties:
+        _id:
+          type: integer
+          example: 1
+        createAt:
+          type: string
+          example: 30/09/2022 às 17:30
+        updatedAt:
+          type: string
+          example: 30/09/2022 às 17:30
+        idGateway:
+          type: string
+          example: fasdfewrew
+        status:
+          type: string
+          required: true
+          enum: [Pendente, Recusado, Aceito]
+          example: Ativo
+        paymentType:
+          type: string
+          required: true
+          enum: [App, Cartão de credito, Vale Alimentação, Dinheiro]
+          example: Ativo

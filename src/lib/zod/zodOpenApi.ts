@@ -8,15 +8,14 @@ import path from 'path';
 import IComponentDoc from '@myTypes/generics/IComponentDoc';
 import IComponentZod from '@myTypes/generics/IComponentZod';
 
-import ZodComponentsAdminByAdmin from '@validators/user/zodComponents/ZodComponentsAdminByAdmin';
-import ZodComponentsContactUs from '@validators/noAuthGeneric/zodComponents/ZodComponentsContactUs';
 import ZodComponentsPassword from '@validators/noAuthGeneric/zodComponents/ZodComponentsPassword';
 import ZodComponentsSession from '@validators/session/zodComponents/ZodComponentsSession';
-import ZodComponentsFaqsByAdmin from '@validators/faqs/zodComponents/ZodComponentsFaqsByAdmin';
-import ZodComponentsNoAuthFaqs from '@validators/faqs/zodComponents/ZodComponentsNoAuthFaqs';
-import ZodComponentsClientByAdmin from '@validators/user/zodComponents/ZodComponentsClientByAdmin';
 import ZodComponentsUserByUser from '@validators/user/zodComponents/ZodComponentsUserByUser';
 import ZodComponentsUserNoAuth from '@validators/user/zodComponents/ZodComponentsUserNoAuth';
+import ZodComponentsProductBySupplier from '@validators/product/zodComponents/ZodComponentsProductBySupplier';
+import ZodComponentsProductByUser from '@validators/product/zodComponents/ZodComponentsProductByUser';
+import ZodComponentsOrderBySupplier from '@validators/order/zodComponents/ZodComponentsOrderBySupplier';
+import ZodComponentsOrderByUser from '@validators/order/zodComponents/ZodComponentsOrderByUser';
 
 import { zod } from './ZodValidation';
 
@@ -30,15 +29,14 @@ class ZodOpenApiGenerate {
   };
 
   public run() {
-    this.generateFile(ZodComponentsContactUs.document);
     this.generateFile(ZodComponentsPassword.document);
     this.generateFile(ZodComponentsSession.document);
-    this.generateFile(ZodComponentsFaqsByAdmin.document);
-    this.generateFile(ZodComponentsNoAuthFaqs.document);
-    this.generateFile(ZodComponentsAdminByAdmin.document);
-    this.generateFile(ZodComponentsClientByAdmin.document);
     this.generateFile(ZodComponentsUserByUser.document);
     this.generateFile(ZodComponentsUserNoAuth.document);
+    this.generateFile(ZodComponentsProductBySupplier.document);
+    this.generateFile(ZodComponentsProductByUser.document);
+    this.generateFile(ZodComponentsOrderBySupplier.document);
+    this.generateFile(ZodComponentsOrderByUser.document);
   }
 
   private generateComponent(component: IComponentZod[]) {

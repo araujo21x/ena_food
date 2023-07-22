@@ -1,0 +1,292 @@
+paths:
+  /v1/user/self:
+    get:
+      tags: ["UserSelf(Usuário se manipula) - Geral"]
+      summary: (Geral) -> Rota para mostrar dados do usuário logado.
+      description: Rota para mostrar dados do usuário logado.
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+  /v1/user/self -> Fornecedor:
+    patch:
+      tags: ["UserSelf(Usuário se manipula) - Geral"]
+      summary: (Geral) -> Rota para usuários fornecedor editar-se.
+      description: Rota para usuários fornecedor editar-se.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSelfSupplier'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: Usuário editado com sucesso
+                  user:
+                    $ref: '#/components/schemas/User'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+  /v1/user/self -> Cliente:
+    patch:
+      tags: ["UserSelf(Usuário se manipula) - Geral"]
+      summary: (Geral) -> Rota para usuários clientes editar-se.
+      description: Rota para usuários clientes editar-se.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSelfClient'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: Usuário editado com sucesso
+                  user:
+                    $ref: '#/components/schemas/User'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+
+  /v1/user/self -> Empresa:
+    patch:
+      tags: ["UserSelf(Usuário se manipula) - Geral"]
+      summary: (Geral) -> Rota para usuários empresas editar-se.
+      description: Rota para usuários empresas editar-se.
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EditSelfCompany'
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    required: true
+                    example: Usuário editado com sucesso
+                  user:
+                    $ref: '#/components/schemas/User'
+
+        "400":
+          description: Erros envolvendo algum campo obrigatório que não foi enviado ou algum campo inválido.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: email é inválido.
+
+        "403":
+          description: Sem permissão para acessar esse recurso.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Sem permissão para acessar esse recurso.
+
+        "404":
+          description: Usuário não encontrado na base de dados.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Usuário não encontrado na base de dados.
+
+        "500":
+          description: Erro interno no servidor.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    required: true
+                    example: Erro interno no servidor.
+

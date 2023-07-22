@@ -57,7 +57,6 @@ class App {
         // eslint-disable-next-line no-unused-vars
         next: NextFunction
       ) => {
-        console.log(err);
         if (err instanceof AppError) {
           const { message, statusCode } = err;
           return response.status(statusCode).json({ errors: message });
