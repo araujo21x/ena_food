@@ -11,6 +11,7 @@
 # Sumario
 - [Sumario](#sumario)
 - [Sobre](#sobre)
+- [Justificativa](#justificativa)
 - [Pré-Requisito](#pré-requisito)
 - [Executando o projeto](#executando-o-projeto)
 - [Build](#build)
@@ -32,6 +33,23 @@ Projeto desafio delivery - enaFood.
 - A documentação pode ser acessar através do endPoint: <strong>/apiDocs</strong>
 - Collection do insomnia [Link](/tmp/EnaFood_2023-07-22.json)
 - Docker configurado e tem um exemplo para o banc no docker na env
+
+<br>
+
+___
+# Justificativa
+
+<br>
+
+<p align="justify">
+Tentei deixar o projeto simples e com o máximo de função genérica, como a regra de negócio foi bem abstrata pensei em alguns cenários, as regras mais complexas deixei em funções separadas para facilitar atualização da regra de negócio. O Mongo só usei uma vez a 3 anos atrás, sou acostumado com banco relacional, mas tentei evitar o máximo possível relacionamentos para ganho de performasse.
+As tecnologias e pacotes escolhidas foram esses por motivo de um bom suporte e boa documentação.
+- O número de telefone não coloquei como um campo único, pois é comum as pessoas perderem numero de telefone por não fazerem recarga;
+- O status do usuário tem pendente para caso o sistema adicione feature de análise antes de ser aprovado;
+- Endereço eu achei melhor adiciona como array de objeto no usuário e como um objeto no pedido para evitar relacionamento, acredito que seria mais performático do que criar um documento endereço com referência para o usuário ou para o endereço, que também seria uma cópia do endereço que o cliente escolheu com referência ao pedido.
+- No pagamento para fins de teste, mesmo que seja um tipo de pagamento que seria feito com gateway de pagamento, vou colocar como pagamento aceito e pular o status de aguardando pagamento.
+
+</p>
 
 <br>
 
@@ -57,11 +75,11 @@ Projeto desafio delivery - enaFood.
 
 HTTPS:
 ```bash
-$ git clone
+$ git clone https://github.com/araujo21x/ena_food.git
 ```
 SSH:
 ```bash
-$ git clone
+$ git clone git@github.com:araujo21x/ena_food.git
 ```
 
 <strong>2 - </strong>  Acesse a pasta do projeto no terminal/cmd:
