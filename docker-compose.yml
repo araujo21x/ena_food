@@ -23,17 +23,18 @@ services:
 
   app_mongodb:
     image: mongo:6-jammy
+    container_name: mongo_ena_food
     restart: always
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo mongo:27017/test --quiet
-      interval: 10s
+      test: mongosh --eval 'db.runCommand("ping").ok' --quiet
       timeout: 10s
-      retries: 5
+      retries: 10
     ports:
-      - "3500:27017"
+      - "27017:27017"
     volumes:
-      - "./data:/data/db"
+      - dbdata6:/data/db
 
 volumes:
   app_volume:
     driver: local
+  dbdata6:
