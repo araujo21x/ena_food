@@ -41,7 +41,10 @@ class OrderService {
       { _id: id },
       orderFieldService.factory(body),
       { new: true }
-    );
+    )
+      .populate('items.product')
+      .populate('client')
+      .populate('supplier');
 
     if (!order) throw new AppError(errorMessages.ORDER_ALREADY_EXISTS, 404);
 

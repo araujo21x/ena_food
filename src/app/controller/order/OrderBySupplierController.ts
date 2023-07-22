@@ -33,7 +33,7 @@ class OrderBySupplierController {
   }
 
   public async edit(req: Request, res: Response): Promise<Response> {
-    await allowedUser.generic(req, [UserRole.CUSTOMER, UserRole.COMPANY]);
+    await allowedUser.generic(req, [UserRole.SUPPLIER]);
     const { id }: any = req.params;
 
     const order = await orderService.getBy({
